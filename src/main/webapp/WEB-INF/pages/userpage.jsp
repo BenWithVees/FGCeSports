@@ -106,5 +106,6 @@ body {
 		</h1>
 	</sec:authorize>
 	<p>You are viewing ${userName }'s profile</p>
+	<p><a href="./newpassword">Settings</a></p>
 </body>
 </html>

@@ -33,6 +33,9 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
+	@Column(name = "password_placeholder")
+	private String passwordPlaceholder;
+
 	@Column(name = "email")
 	private String email;
 
@@ -82,6 +85,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordPlaceholder() {
+		return passwordPlaceholder;
+	}
+
+	public void setPasswordPlaceholder(String passwordPlaceholder) {
+		this.passwordPlaceholder = passwordPlaceholder;
 	}
 
 	public String getEmail() {

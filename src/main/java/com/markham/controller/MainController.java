@@ -1,6 +1,9 @@
 package com.markham.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
 import com.markham.tables.User;
 
@@ -85,6 +87,34 @@ public class MainController {
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
 	public ModelAndView notFound() {
 		ModelAndView view = new ModelAndView();
+		return view;
+	}
+
+	@RequestMapping(value = "/newpassword", method = RequestMethod.GET)
+	public ModelAndView newPassword() {
+		ModelAndView view = new ModelAndView();
+		User user = new User();
+		view.addObject("user", user);
+		return view;
+	}
+
+	@RequestMapping(value = "/newpassword", method = RequestMethod.POST)
+	public ModelAndView newPasswordPost(@ModelAttribute("user") User user,
+			@RequestParam(value = "error", required = false) String error) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName(); // get logged in username
+		User compareUser = userDAO.find(name);
+		ModelAndView view = new ModelAndView();
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		if (!(passwordEncoder.matches(user.getPassword(), compareUser.getPassword()))) {
+			view.addObject("error", "Your old password doesn't match");
+		} else {
+			compareUser.setPassword(user.getPasswordPlaceholder());
+			userDAO.resetPassword(compareUser);
+			view.setViewName("redirect:/");
+		}
+
 		return view;
 	}
 

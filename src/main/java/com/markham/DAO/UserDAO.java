@@ -59,4 +59,11 @@ public class UserDAO {
 		return user;
 	}
 
+	public void resetPassword(User user) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(hashedPassword);
+		em.merge(user);
+	}
+
 }
