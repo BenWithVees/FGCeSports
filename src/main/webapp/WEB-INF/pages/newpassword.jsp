@@ -195,9 +195,7 @@ p a {
 					name="password" placeholder="***********"></form:input>
 			</div>
 			<button type="submit" class="submit">Reset password</button>
-			<p style="text-align: center;">
-				Not a member? <a href="./register">Sign up!</a>
-			</p>
+
 		</div>
 	</form:form>
 </body>

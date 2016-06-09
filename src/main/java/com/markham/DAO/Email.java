@@ -20,12 +20,12 @@ public class Email implements EmailManager {
 	}
 
 	/**
-	 * This method constructs a mail template to send for a new user
+	 * This method constructs a mail template to send for a new user 
 	 */
 	public void placeOrder(User user) {
 		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
 
-		String message = "ech";
+		String message = "Thank you for joining FGCeSports!";
 
 		msg.setText(message);
 		msg.setTo(user.getEmail());

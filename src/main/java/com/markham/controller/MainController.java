@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
 import com.markham.tables.User;
 
@@ -22,6 +23,9 @@ public class MainController {
 
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired 
+	private Email email;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -57,6 +61,7 @@ public class MainController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerPost(@ModelAttribute("user") User user, BindingResult result, Model model) {
 		ModelAndView view = new ModelAndView();
+		email.placeOrder(user);
 		userDAO.save(user);
 		userDAO.addUniqueRole(user);
 		view.setViewName("redirect:login");
