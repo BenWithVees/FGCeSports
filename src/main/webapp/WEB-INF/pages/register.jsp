@@ -166,6 +166,13 @@ input {
 	color: black;
 	opacity: 1;
 }
+
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	color: #a94442;
+}
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -192,6 +199,7 @@ input {
 	</div>
 	<form:form modelAttribute="user" commandName="user" method="POST">
 		<div class="container">
+			<c:if test="${not empty error }">"${error }"</c:if>
 			<h1 style="text-align: center; margin-top: 50px;">Please enter
 				your info...</h1>
 			<div class="left_side">

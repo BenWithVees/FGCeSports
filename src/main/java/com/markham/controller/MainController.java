@@ -23,8 +23,8 @@ public class MainController {
 
 	@Autowired
 	private UserDAO userDAO;
-	
-	@Autowired 
+
+	@Autowired
 	private Email email;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -61,10 +61,16 @@ public class MainController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerPost(@ModelAttribute("user") User user, BindingResult result, Model model) {
 		ModelAndView view = new ModelAndView();
-		email.placeOrder(user);
-		userDAO.save(user);
-		userDAO.addUniqueRole(user);
-		view.setViewName("redirect:login");
+		try {
+			userDAO.find(user.getUsername());
+			view.addObject("error", "That username already exists. Please pick another.");
+		} catch (Exception e) {
+			System.out.println(e);
+			email.placeOrder(user);
+			userDAO.save(user);
+			userDAO.addUniqueRole(user);
+			view.setViewName("redirect:/login");
+		}
 		return view;
 	}
 

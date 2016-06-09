@@ -59,6 +59,18 @@ public class UserDAO {
 		return user;
 	}
 
+	public boolean findBool(String username) {
+		TypedQuery<User> query = em.createNamedQuery("User.findUsers", User.class);
+		query.setParameter("username", username);
+		boolean found = true;
+		try {
+			query.getSingleResult();
+		} catch (Exception e) {
+			found = false;
+		}
+		return found;
+	}
+
 	public void resetPassword(User user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(user.getPassword());
