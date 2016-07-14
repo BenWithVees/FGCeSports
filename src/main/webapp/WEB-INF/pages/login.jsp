@@ -145,6 +145,13 @@ p a {
 	border: 1px solid transparent;
 	color: #a94442;
 }
+
+.emailError {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	color: #a94442;
+}
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -157,6 +164,7 @@ p a {
 			<li><a href="">Games</a></li>
 			<li><a href="./players">Players</a></li>
 			<li><a href="">News</a></li>
+			<li><a href="./streams">Streams</a></li>
 			<li style="float: right"><a href="./login">Login/Sign up</a></li>
 		</ul>
 	</div>
@@ -165,6 +173,9 @@ p a {
 		method='POST'>
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
+		</c:if>
+		<c:if test="${not empty emailError}">
+			<div class="error">${emailError}</div>
 		</c:if>
 		<div class="login_container">
 
@@ -177,6 +188,12 @@ p a {
 			<button type="submit" class="submit">Login</button>
 			<p>
 				Not a member? <a href="./register">Sign up!</a>
+			</p>
+			<p>
+				 <a href="./forgotusername">Forgot username?</a>
+			</p>
+			<p>
+				 <a href="./forgotpassword">Forgot password?</a>
 			</p>
 		</div>
 		<input type="hidden" name="${_csrf.parameterName}"

@@ -20,7 +20,7 @@ public class Email implements EmailManager {
 	}
 
 	/**
-	 * This method constructs a mail template to send for a new user 
+	 * This method constructs a mail template to send for a new user
 	 */
 	public void placeOrder(User user) {
 		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
@@ -35,6 +35,21 @@ public class Email implements EmailManager {
 		} catch (MailException ex) {
 			ex.printStackTrace(System.out);
 		}
+	}
+
+	public void forgotUsername(User user) {
+		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+
+		String message = "Hello " + user.getEmail() + ", \n\nYour username is " + user.getUsername()
+				+ " \n\nThank you,\nFGCeSports Team.";
+		msg.setText(message);
+		msg.setTo(user.getEmail());
+		try {
+			this.mailSender.send(msg);
+		} catch (MailException ex) {
+			ex.printStackTrace(System.out);
+		}
+
 	}
 
 }

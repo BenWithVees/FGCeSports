@@ -7,9 +7,6 @@
 <style>
 @import url(http://fonts.googleapis.com/css?family=Lato:300,500);
 
-/*
-  pad the body and set default font styles
-*/
 body {
 	font: 300 16px/1.2 Lato;
 	background-image: url('resource/images/witewall_3.png');
@@ -66,21 +63,19 @@ body {
 }
 
 .login_container {
-	text-align: left;
-	height: 500px;
+	height: 400px;
 	width: 400px;
 	margin: auto;
 	margin-top: 230px;
 	box-shadow: inset 0 0 90px #999, inset 5px 0 10px #999, inset -5px 0
 		10px #999, inset 5px 0 10px #999, inset -5px 0 10px #999, 0 0 50px
 		#999, -5px 0 0px #999, 5px 0 0px #999;
-	border-radius: 20%;
-	height: 500px;
+	border-radius: 20%
 }
 
 .username {
-	margin: 50px 20% 5% 20%;
-	padding-top: 20%;
+	margin: 20px 20% 5% 20%;
+	padding-top: 20px;
 }
 
 .password {
@@ -137,12 +132,8 @@ input {
 	opacity: 1;
 }
 
-.username p {
-	text-align: left;
-}
-
-.password p {
-	text-align: left;
+p {
+	text-align: center;
 }
 
 p a {
@@ -158,46 +149,38 @@ p a {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>eSports FGC | Settings</title>
+<title>eSports FGC | Forgot Username</title>
 </head>
 <body>
-	<c:set var="username" scope="session"
-		value="${pageContext.request.userPrincipal.name}" />
 	<div class="menu">
 		<ul class="nav">
 			<li><a href="./">Home</a><i class="circle"></i></li>
-			<li><a href="./games">Games</a></li>
+			<li><a href="">Games</a></li>
 			<li><a href="./players">Players</a></li>
 			<li><a href="">News</a></li>
 			<li><a href="./streams">Streams</a></li>
-			<li style="float: right"><c:choose>
-					<c:when test="${not empty username}">
-						<a href="./${username }"><c:out value="${username}" /></a>
-					</c:when>
-					<c:otherwise>
-						<a href="./login">Login/Sign up</a>
-					</c:otherwise>
-				</c:choose></li>
+			<li style="float: right"><a href="./login">Login/Sign up</a></li>
 		</ul>
 	</div>
 	<form:form modelAttribute="user" method="POST" commandName="user">
-		<div class="login_container">
-			<div class="username">
-				<c:if test="${not empty error}">
-					<div class="error">${error}</div>
-				</c:if>
-				<p>Old password:</p>
-				<form:input path="password" type="password" name="username"
-					placeholder="***********"></form:input>
-			</div>
-			<div class="password">
-				<p>New password:</p>
-				<form:input path="passwordPlaceholder" type="password"
-					name="password" placeholder="***********"></form:input>
-			</div>
-			<button type="submit" class="submit">Reset password</button>
 
+		<div class="login_container">
+			<p style="font-size: 25px; padding-top: 30px;">Please enter your
+				email</p>
+			<p>We will send you an email to recover your username</p>
+			<c:if test="${not empty error}">
+				<div class="error">${error}</div>
+			</c:if>
+			<div class="username">
+				<form:input path="email" type="text" name="email"
+					placeholder="example@email.com"></form:input>
+			</div>
+
+			<button type="submit" class="submit">Submit</button>
+			<a href="./login" style="color: black; margin-left: 43%;">Go back</a>
 		</div>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 	</form:form>
 </body>
 </html>

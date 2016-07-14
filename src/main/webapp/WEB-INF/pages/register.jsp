@@ -63,10 +63,10 @@ body {
 }
 
 .container {
-	height: 500px;
+	height: 600px;
 	width: 800px;
 	margin: auto;
-	margin-top: 230px;
+	margin-top: 150px;
 	box-shadow: inset 0 0 90px #999, inset 5px 0 10px #999, inset -5px 0
 		10px #999, inset 5px 0 10px #999, inset -5px 0 10px #999, 0 0 50px
 		#999, -5px 0 0px #999, 5px 0 0px #999;
@@ -122,11 +122,11 @@ input {
 }
 
 .submit_button {
-	width: 400px;
+	width: 300px;
 	height: 100px;
 	float: left;
 	margin-left: 200px;
-	margin-top: 40px;
+	margin-top: 100px;
 }
 
 .submit {
@@ -135,7 +135,7 @@ input {
 	width: 230px;
 	height: 50px;
 	margin: auto;
-	margin-top: 20px;
+
 	background-color: #999;
 	border: none;
 	display: block;
@@ -187,6 +187,7 @@ input {
 			<li><a href="">Games</a></li>
 			<li><a href="./players">Players</a></li>
 			<li><a href="">News</a></li>
+			<li><a href="./streams">Streams</a></li>
 			<li style="float: right"><c:choose>
 					<c:when test="${not empty username}">
 						<a href="javascript:formSubmit()"><c:out value="${username}" /></a>
@@ -200,6 +201,7 @@ input {
 	<form:form modelAttribute="user" commandName="user" method="POST">
 		<div class="container">
 			<c:if test="${not empty error }">"${error }"</c:if>
+			<c:if test="${not empty errorEmail }">"${errorEmail }"</c:if>
 			<h1 style="text-align: center; margin-top: 50px;">Please enter
 				your info...</h1>
 			<div class="left_side">
@@ -225,6 +227,17 @@ input {
 					<p>Confirm password:</p>
 					<input type="password" name="confirm" placeholder="*********" />
 				</div>
+
+				<div class="confirm">
+					<p>Secret question:</p>
+					<select>
+						<option>Something1</option>
+						<option>Something2</option>
+						<option>Something3</option>
+						<option>Something4</option>
+					</select>
+				</div>
+
 			</div>
 			<div class=submit_button>
 				<button type="submit" class="submit">Register</button>

@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name = "User.findUsers", query = "SELECT u FROM User u WHERE u.username = :username")
+@NamedQueries({ @NamedQuery(name = "User.findUsers", query = "SELECT u FROM User u WHERE u.username = :username"),
+		@NamedQuery(name = "User.findUsersByEmail", query = "SELECT u FROM User u where u.email = :email") })
 @Table(name = "users")
 public class User {
 

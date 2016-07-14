@@ -396,6 +396,7 @@ body {
 			<li><a href="./games">Games</a></li>
 			<li><a href="./players">Players</a></li>
 			<li><a href="">News</a></li>
+			<li><a href="./streams">Streams</a></li>
 			<li style="float: right"><c:choose>
 					<c:when test="${not empty username}">
 						<a href="./${username }"><c:out value="${username}" /></a>

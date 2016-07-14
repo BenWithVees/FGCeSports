@@ -59,6 +59,13 @@ public class UserDAO {
 		return user;
 	}
 
+	public User findByEmail(String email) {
+		TypedQuery<User> query = em.createNamedQuery("User.findUsersByEmail", User.class);
+		query.setParameter("email", email);
+		User user = query.getSingleResult();
+		return user;
+	}
+
 	public boolean findBool(String username) {
 		TypedQuery<User> query = em.createNamedQuery("User.findUsers", User.class);
 		query.setParameter("username", username);

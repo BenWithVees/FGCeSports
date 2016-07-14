@@ -1,6 +1,7 @@
 package com.markham.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSendException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -64,12 +65,20 @@ public class MainController {
 		try {
 			userDAO.find(user.getUsername());
 			view.addObject("error", "That username already exists. Please pick another.");
+			userDAO.findByEmail(user.getEmail());
+			view.addObject("errorEmail", "That email has already been reigstered.");
 		} catch (Exception e) {
 			System.out.println(e);
-			email.placeOrder(user);
-			userDAO.save(user);
-			userDAO.addUniqueRole(user);
-			view.setViewName("redirect:/login");
+			try {
+				email.placeOrder(user);
+				userDAO.save(user);
+				userDAO.addUniqueRole(user);
+				view.setViewName("redirect:/login");
+			} catch (MailSendException f) {
+				System.err.println(f);
+				view.addObject("emailError", "That's an invalid email address.");
+			}
+
 		}
 		return view;
 	}
@@ -126,6 +135,36 @@ public class MainController {
 			view.setViewName("redirect:/");
 		}
 
+		return view;
+	}
+
+	@RequestMapping(value = "/forgotusername", method = RequestMethod.GET)
+	public ModelAndView forgotPassword() {
+		ModelAndView view = new ModelAndView();
+		User user = new User();
+		view.addObject("user", user);
+		return view;
+
+	}
+
+	@RequestMapping(value = "/forgotusername", method = RequestMethod.POST)
+	public ModelAndView forgotPasswordPost(@ModelAttribute("user") User user,
+			@RequestParam(value = "error", required = false) String error) {
+		ModelAndView view = new ModelAndView();
+		try {
+			user = userDAO.findByEmail(user.getEmail());
+			email.forgotUsername(user);
+			view.setViewName("redirect:/login");
+		} catch (Exception e) {
+			view.addObject("error", "Invalid email address");
+		}
+
+		return view;
+	}
+
+	@RequestMapping(value = "/streams", method = RequestMethod.GET)
+	public ModelAndView streams() {
+		ModelAndView view = new ModelAndView();
 		return view;
 	}
 
