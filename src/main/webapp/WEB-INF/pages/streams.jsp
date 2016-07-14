@@ -85,6 +85,7 @@ body {
 				</c:choose></li>
 		</ul>
 	</div>
+	
 	<blockquote class="embedly-card"
 		data-card-key="2e85a5fb4046444e9018df8a36b1bb2f"
 		data-card-controls="0">

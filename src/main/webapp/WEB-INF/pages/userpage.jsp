@@ -107,6 +107,9 @@ body {
 		</h1>
 	</sec:authorize>
 	<p>You are viewing ${userName }'s profile</p>
-	<p><a href="./newpassword">Settings</a></p>
+	<p>
+		<a href="./newpassword">Settings</a>
+	</p>
+	<input type="file" name="file" />
 </body>
 </html>

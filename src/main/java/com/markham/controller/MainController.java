@@ -104,6 +104,13 @@ public class MainController {
 		return view;
 	}
 
+	@RequestMapping(value = "/{userName}", method = RequestMethod.POST)
+	public ModelAndView userProfilePost(@PathVariable String userName) {
+		ModelAndView view = new ModelAndView();
+		return view;
+
+	}
+
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
 	public ModelAndView notFound() {
 		ModelAndView view = new ModelAndView();
