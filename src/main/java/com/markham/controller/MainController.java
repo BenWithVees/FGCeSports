@@ -107,6 +107,7 @@ public class MainController {
 	@RequestMapping(value = "/{userName}", method = RequestMethod.POST)
 	public ModelAndView userProfilePost(@PathVariable String userName) {
 		ModelAndView view = new ModelAndView();
+		
 		return view;
 
 	}

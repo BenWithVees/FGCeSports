@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE>
 <html>
 <style>
@@ -110,6 +111,10 @@ body {
 	<p>
 		<a href="./newpassword">Settings</a>
 	</p>
-	<input type="file" name="file" />
+	<form:form method="POST" commandName="user"
+		enctype="multipart/form-data">
+		<input type="file" name="file" />
+		<input type="submit" value="Upload" />
+	</form:form>
 </body>
 </html>
