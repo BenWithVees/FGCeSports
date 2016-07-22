@@ -1,5 +1,9 @@
 package com.markham.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSendException;
 import org.springframework.security.core.Authentication;
@@ -12,11 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
+import com.markham.tables.Settings;
 import com.markham.tables.User;
 
 @RestController
@@ -93,6 +100,7 @@ public class MainController {
 	@RequestMapping(value = "/{userName}", method = RequestMethod.GET)
 	public ModelAndView userProfile(@PathVariable String userName) {
 		ModelAndView view = new ModelAndView();
+		Settings settings = new Settings();
 		try {
 			userDAO.find(userName);
 		} catch (Exception e) {
@@ -100,15 +108,30 @@ public class MainController {
 			return new ModelAndView("redirect:/404");
 		}
 		view.addObject("userName", userName);
+		view.addObject("settings", settings);
 		view.setViewName("userpage");
 		return view;
 	}
 
 	@RequestMapping(value = "/{userName}", method = RequestMethod.POST)
-	public ModelAndView userProfilePost(@PathVariable String userName) {
-		ModelAndView view = new ModelAndView();
-		
-		return view;
+	public @ResponseBody String userProfilePost(@PathVariable String userName,
+			@RequestParam("file") MultipartFile file) {
+		String fileName = null;
+		if (!file.isEmpty()) {
+			try {
+				fileName = file.getOriginalFilename();
+				byte[] bytes = file.getBytes();
+				BufferedOutputStream buffStream = new BufferedOutputStream(
+						new FileOutputStream(new File("/Users/ben/Desktop/" + fileName)));
+				buffStream.write(bytes);
+				buffStream.close();
+				return "You have successfully uploaded " + fileName;
+			} catch (Exception e) {
+				return "You failed to upload " + fileName + ": " + e.getMessage();
+			}
+		} else {
+			return "Unable to upload. File is empty.";
+		}
 
 	}
 

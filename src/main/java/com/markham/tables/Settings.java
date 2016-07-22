@@ -16,7 +16,7 @@ public class Settings {
 	private String username;
 
 	@Column(name = "profile_picure")
-	private byte[] profilePictue;
+	private byte[] profilePicture;
 
 	@Column(name = "profilePictureName")
 	private String profilePictureName;
@@ -32,12 +32,12 @@ public class Settings {
 		this.username = username;
 	}
 
-	public byte[] getProfilePictue() {
-		return profilePictue;
+	public byte[] getProfilePicture() {
+		return profilePicture;
 	}
 
-	public void setProfilePictue(byte[] profilePictue) {
-		this.profilePictue = profilePictue;
+	public void setProfilePicture(byte[] profilePicture) {
+		this.profilePicture = profilePicture;
 	}
 
 	public String getProfilePictureName() {

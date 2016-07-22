@@ -111,7 +111,7 @@ body {
 	<p>
 		<a href="./newpassword">Settings</a>
 	</p>
-	<form:form method="POST" commandName="user"
+	<form:form method="POST" action="userProfilePost"
 		enctype="multipart/form-data">
 		<input type="file" name="file" />
 		<input type="submit" value="Upload" />
