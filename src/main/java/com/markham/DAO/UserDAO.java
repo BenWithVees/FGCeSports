@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.markham.tables.Role;
+import com.markham.tables.Settings;
 import com.markham.tables.User;
 
 @Component
@@ -83,6 +84,10 @@ public class UserDAO {
 		String hashedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hashedPassword);
 		em.merge(user);
+	}
+
+	public void saveProfilePicture(Settings settings) {
+		em.merge(settings);
 	}
 
 }

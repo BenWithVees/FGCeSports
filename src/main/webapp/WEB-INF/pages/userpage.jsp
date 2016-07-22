@@ -107,14 +107,18 @@ body {
 				href="javascript:formSubmit()"> logout</a>
 		</h1>
 	</sec:authorize>
+	<img src="data:image/jpg;base64, ${picture}" alt="${picture}" width="200"
+		height="200" />
+		
 	<p>You are viewing ${userName }'s profile</p>
 	<p>
 		<a href="./newpassword">Settings</a>
 	</p>
-	<form:form method="POST" action="userProfilePost"
+	<form:form method="POST" commandName="user"
 		enctype="multipart/form-data">
 		<input type="file" name="file" />
 		<input type="submit" value="Upload" />
 	</form:form>
+
 </body>
 </html>

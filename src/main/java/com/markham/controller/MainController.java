@@ -1,10 +1,17 @@
 package com.markham.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +27,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import org.apache.commons.codec.binary.Base64;
 
 import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
@@ -97,10 +106,17 @@ public class MainController {
 
 	}
 
-	@RequestMapping(value = "/{userName}", method = RequestMethod.GET)
-	public ModelAndView userProfile(@PathVariable String userName) {
+	@ResponseBody
+	@RequestMapping(value = "/{userName}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+	public ModelAndView userProfile(@PathVariable String userName, HttpServletResponse response,
+			HttpServletRequest request) throws IOException {
 		ModelAndView view = new ModelAndView();
-		Settings settings = new Settings();
+		User user = userDAO.find(userName);
+		InputStream in = new ByteArrayInputStream(user.getSettings().getProfilePicture());
+		BufferedImage img = ImageIO.read(in);
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		ImageIO.write(img, "png", byteArrayOutputStream);
+		String photoString = Base64.encodeBase64String(byteArrayOutputStream.toByteArray());
 		try {
 			userDAO.find(userName);
 		} catch (Exception e) {
@@ -108,31 +124,34 @@ public class MainController {
 			return new ModelAndView("redirect:/404");
 		}
 		view.addObject("userName", userName);
-		view.addObject("settings", settings);
+		view.addObject("picture", photoString);
 		view.setViewName("userpage");
 		return view;
 	}
 
 	@RequestMapping(value = "/{userName}", method = RequestMethod.POST)
-	public @ResponseBody String userProfilePost(@PathVariable String userName,
-			@RequestParam("file") MultipartFile file) {
+	public ModelAndView userProfilePost(@PathVariable String userName, @RequestParam("file") MultipartFile file,
+			@ModelAttribute("user") User user) {
+		ModelAndView view = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName(); // get logged in username
+		Settings settings = userDAO.find(name).getSettings();
 		String fileName = null;
 		if (!file.isEmpty()) {
 			try {
 				fileName = file.getOriginalFilename();
-				byte[] bytes = file.getBytes();
-				BufferedOutputStream buffStream = new BufferedOutputStream(
-						new FileOutputStream(new File("/Users/ben/Desktop/" + fileName)));
-				buffStream.write(bytes);
-				buffStream.close();
-				return "You have successfully uploaded " + fileName;
+				settings.setProfilePicture(file.getBytes());
+				settings.setProfilePictureName(fileName);
+				userDAO.saveProfilePicture(settings);
+				view.setViewName("redirect:/");
 			} catch (Exception e) {
-				return "You failed to upload " + fileName + ": " + e.getMessage();
+				System.err.println(e + " Didn't upload");
+				view.setViewName("redirect:/");
 			}
 		} else {
-			return "Unable to upload. File is empty.";
+			view.setViewName("redirect:/" + userName);
 		}
-
+		return view;
 	}
 
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
