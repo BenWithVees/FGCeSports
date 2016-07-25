@@ -86,9 +86,11 @@ public class MainController {
 		} catch (Exception e) {
 			System.out.println(e);
 			try {
-				email.placeOrder(user);
+				Settings settings = new Settings();
 				userDAO.save(user);
 				userDAO.addUniqueRole(user);
+				email.placeOrder(user);
+				userDAO.addSettings(settings, user);
 				view.setViewName("redirect:/login");
 			} catch (MailSendException f) {
 				System.err.println(f);
@@ -112,19 +114,25 @@ public class MainController {
 			HttpServletRequest request) throws IOException {
 		ModelAndView view = new ModelAndView();
 		User user = userDAO.find(userName);
-		InputStream in = new ByteArrayInputStream(user.getSettings().getProfilePicture());
-		BufferedImage img = ImageIO.read(in);
-		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		ImageIO.write(img, "png", byteArrayOutputStream);
-		String photoString = Base64.encodeBase64String(byteArrayOutputStream.toByteArray());
+		String photoString = "";
+		try {
+			InputStream in = new ByteArrayInputStream(user.getSettings().getProfilePicture());
+			BufferedImage img = ImageIO.read(in);
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			ImageIO.write(img, "png", byteArrayOutputStream);
+			photoString = Base64.encodeBase64String(byteArrayOutputStream.toByteArray());
+
+		} catch (Exception e) {
+			System.err.println(e);
+		}
 		try {
 			userDAO.find(userName);
 		} catch (Exception e) {
 			System.err.println(e);
 			return new ModelAndView("redirect:/404");
 		}
-		view.addObject("userName", userName);
 		view.addObject("picture", photoString);
+		view.addObject("userName", userName);
 		view.setViewName("userpage");
 		return view;
 	}

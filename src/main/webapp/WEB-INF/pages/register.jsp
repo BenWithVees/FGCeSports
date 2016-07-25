@@ -135,7 +135,6 @@ input {
 	width: 230px;
 	height: 50px;
 	margin: auto;
-
 	background-color: #999;
 	border: none;
 	display: block;
@@ -226,16 +225,6 @@ input {
 				<div class="confirm">
 					<p>Confirm password:</p>
 					<input type="password" name="confirm" placeholder="*********" />
-				</div>
-
-				<div class="confirm">
-					<p>Secret question:</p>
-					<select>
-						<option>Something1</option>
-						<option>Something2</option>
-						<option>Something3</option>
-						<option>Something4</option>
-					</select>
 				</div>
 
 			</div>

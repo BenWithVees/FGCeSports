@@ -39,11 +39,16 @@ public class UserDAO {
 		Collection<Role> roles = new ArrayList<Role>();
 		roles.add(role);
 		user.setRoles(roles);
-
+		user.setUsername(user.getUsername());
 		user.setUserRoles(roles.size());
 		em.persist(user);
 
 		return user;
+	}
+
+	public void saveUsername(User user) {
+		user.setUsername(user.getUsername());
+		em.merge(user);
 	}
 
 	public void addUniqueRole(User user) {
@@ -51,6 +56,13 @@ public class UserDAO {
 		role.setRole("ROLE_" + user.getUsername());
 		role.setUsername(user.getUsername());
 		em.persist(role);
+	}
+
+	public Settings addSettings(Settings settings, User user) {
+		settings.setUsername(user.getUsername());
+		em.persist(settings);
+		return settings;
+
 	}
 
 	public User find(String username) {

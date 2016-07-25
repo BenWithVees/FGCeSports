@@ -25,7 +25,7 @@ public class User {
 	@Column(name = "user_id")
 	private int userId;
 
-	@Column(name = "username", insertable = false, updatable = false)
+	@Column(name = "username")
 	private String username;
 
 	@Column(name = "firstname")
@@ -53,7 +53,7 @@ public class User {
 	private Collection<Role> roles;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "username_fk")
 	private Settings settings;
 
 	public User() {

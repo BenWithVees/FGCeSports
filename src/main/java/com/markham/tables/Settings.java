@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Settings {
 
 	@Id
-	@Column(name = "username")
+	@Column(name = "username_fk")
 	private String username;
 
 	@Column(name = "profile_picure")
@@ -21,16 +21,8 @@ public class Settings {
 	@Column(name = "profilePictureName")
 	private String profilePictureName;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "settings")
 	private User user;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	public byte[] getProfilePicture() {
 		return profilePicture;
@@ -46,6 +38,14 @@ public class Settings {
 
 	public void setProfilePictureName(String profilePictureName) {
 		this.profilePictureName = profilePictureName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }
