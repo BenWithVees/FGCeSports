@@ -5,63 +5,6 @@
 <!DOCTYPE>
 <html>
 <style>
-@import url(http://fonts.googleapis.com/css?family=Lato:300,500);
-
-body {
-	font: 300 16px/1.2 Lato;
-	background-image: url('resource/images/witewall_3.png');
-}
-
-.menu {
-	width: 100%;
-	height: 50px;
-	border-bottom: 1px solid #999;
-}
-/*
-  navigation
-*/
-.nav {
-	list-style: none;
-	font-size: 20px;
-}
-
-/*
-  nav list items
-  1. side by side
-  2. needed for circle positioning
-*/
-.nav li {
-	float: left; /*1*/
-}
-
-/*
-  nav link items
-*/
-.nav>li a {
-	display: block; /*1*/
-	padding: 12px 18px; /*2*/
-	text-decoration: none; /*3*/
-	color: #999; /*4*/
-	transition: all ease .5s;
-}
-
-/*
-  fade out all links on ul hover
-*/
-.nav:hover>li a {
-	opacity: .5;
-	transition: all ease .5s;
-}
-
-/*
-  override previous rule to highlight current link
-*/
-.nav>li:hover a {
-	opacity: 1;
-	color: #E74C3C;
-	border-color: #E74C3C;
-}
-
 .login_container {
 	height: 400px;
 	width: 400px;
@@ -152,16 +95,7 @@ p a {
 <title>eSports FGC | Forgot Username</title>
 </head>
 <body>
-	<div class="menu">
-		<ul class="nav">
-			<li><a href="./">Home</a><i class="circle"></i></li>
-			<li><a href="">Games</a></li>
-			<li><a href="./players">Players</a></li>
-			<li><a href="">News</a></li>
-			<li><a href="./streams">Streams</a></li>
-			<li style="float: right"><a href="./login">Login/Sign up</a></li>
-		</ul>
-	</div>
+	<jsp:include page="./menu.jsp" />
 	<form:form modelAttribute="user" method="POST" commandName="user">
 
 		<div class="login_container">
