@@ -197,7 +197,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/forgotusername", method = RequestMethod.GET)
-	public ModelAndView forgotPassword() {
+	public ModelAndView forgotUsername() {
 		ModelAndView view = new ModelAndView();
 		User user = new User();
 		view.addObject("user", user);
@@ -206,7 +206,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/forgotusername", method = RequestMethod.POST)
-	public ModelAndView forgotPasswordPost(@ModelAttribute("user") User user,
+	public ModelAndView forgotUsernamePost(@ModelAttribute("user") User user,
 			@RequestParam(value = "error", required = false) String error) {
 		ModelAndView view = new ModelAndView();
 		try {
@@ -218,6 +218,13 @@ public class MainController {
 		}
 
 		return view;
+	}
+
+	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
+	public ModelAndView forgotPassword() {
+		ModelAndView view = new ModelAndView();
+		return view;
+
 	}
 
 	@RequestMapping(value = "/streams", method = RequestMethod.GET)
