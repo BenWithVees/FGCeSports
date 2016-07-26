@@ -113,10 +113,10 @@ public class MainController {
 	public ModelAndView userProfile(@PathVariable String userName, HttpServletResponse response,
 			HttpServletRequest request) throws IOException {
 		ModelAndView view = new ModelAndView();
-		User user = userDAO.find(userName);
+		Settings settings = userDAO.getSettings(userName);
 		String photoString = "";
 		try {
-			InputStream in = new ByteArrayInputStream(user.getSettings().getProfilePicture());
+			InputStream in = new ByteArrayInputStream(settings.getProfilePicture());
 			BufferedImage img = ImageIO.read(in);
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			ImageIO.write(img, "png", byteArrayOutputStream);
@@ -143,7 +143,7 @@ public class MainController {
 		ModelAndView view = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName(); // get logged in username
-		Settings settings = userDAO.find(name).getSettings();
+		Settings settings = userDAO.getSettings(name);
 		String fileName = null;
 		if (!file.isEmpty()) {
 			try {
@@ -151,7 +151,7 @@ public class MainController {
 				settings.setProfilePicture(file.getBytes());
 				settings.setProfilePictureName(fileName);
 				userDAO.saveProfilePicture(settings);
-				view.setViewName("redirect:/");
+				view.setViewName("redirect:/" + name);
 			} catch (Exception e) {
 				System.err.println(e + " Didn't upload");
 				view.setViewName("redirect:/");

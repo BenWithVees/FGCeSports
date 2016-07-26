@@ -2,12 +2,12 @@ package com.markham.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Table(name = "settings")
+@NamedQuery(name = "Settings.getSettings", query = "SELECT s FROM Settings s WHERE s.username = :username")
 @Entity
 public class Settings {
 
@@ -20,9 +20,6 @@ public class Settings {
 
 	@Column(name = "profilePictureName")
 	private String profilePictureName;
-
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "settings")
-	private User user;
 
 	public byte[] getProfilePicture() {
 		return profilePicture;

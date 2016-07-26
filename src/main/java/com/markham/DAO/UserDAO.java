@@ -102,4 +102,10 @@ public class UserDAO {
 		em.merge(settings);
 	}
 
+	public Settings getSettings(String username) {
+		TypedQuery<Settings> query = em.createNamedQuery("Settings.getSettings", Settings.class);
+		query.setParameter("username", username);
+		Settings settings = query.getSingleResult();
+		return settings;
+	}
 }

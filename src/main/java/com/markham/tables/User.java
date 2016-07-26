@@ -5,14 +5,12 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -51,10 +49,6 @@ public class User {
 			@JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "user_role_id", referencedColumnName = "user_role_id") })
 	private Collection<Role> roles;
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "username_fk")
-	private Settings settings;
 
 	public User() {
 	}
@@ -137,14 +131,6 @@ public class User {
 
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
-	}
-
-	public Settings getSettings() {
-		return settings;
-	}
-
-	public void setSettings(Settings settings) {
-		this.settings = settings;
 	}
 
 }
