@@ -3,13 +3,16 @@ package com.markham.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
@@ -27,8 +30,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import org.apache.commons.codec.binary.Base64;
 
 import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
@@ -142,22 +143,28 @@ public class MainController {
 			@ModelAttribute("user") User user) {
 		ModelAndView view = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
+		String name = auth.getName();
 		Settings settings = userDAO.getSettings(name);
 		String fileName = null;
 		if (!file.isEmpty()) {
 			try {
-				fileName = file.getOriginalFilename();
-				settings.setProfilePicture(file.getBytes());
-				settings.setProfilePictureName(fileName);
-				userDAO.saveProfilePicture(settings);
-				view.setViewName("redirect:/" + name);
+				String mimetype = file.getContentType();
+				String type = mimetype.split("/")[0];
+				if (!(type.equals("image"))) {
+					view.addObject("error", "Not a valid image");
+				} else {
+					fileName = file.getOriginalFilename();
+					settings.setProfilePicture(file.getBytes());
+					settings.setProfilePictureName(fileName);
+					userDAO.saveProfilePicture(settings);
+					view.setViewName("redirect:/" + name);
+				}
 			} catch (Exception e) {
 				System.err.println(e + " Didn't upload");
 				view.setViewName("redirect:/");
 			}
 		} else {
-			view.setViewName("redirect:/" + userName);
+			view.addObject("slma", "Not a valid image");
 		}
 		return view;
 	}
@@ -179,9 +186,8 @@ public class MainController {
 	@RequestMapping(value = "/newpassword", method = RequestMethod.POST)
 	public ModelAndView newPasswordPost(@ModelAttribute("user") User user,
 			@RequestParam(value = "error", required = false) String error) {
-
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
+		String name = auth.getName();
 		User compareUser = userDAO.find(name);
 		ModelAndView view = new ModelAndView();
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

@@ -6,7 +6,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE>
 <html>
-
+<style>
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	color: #a94442;
+}
+</style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>eSports FGC | ${userName}</title>
@@ -37,7 +44,9 @@
 		<p>
 			<a href="./newpassword">Reset Password</a>
 		</p>
-
+		<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
 		<form:form method="POST" commandName="user"
 			enctype="multipart/form-data">
 			<input type="file" name="file" />
