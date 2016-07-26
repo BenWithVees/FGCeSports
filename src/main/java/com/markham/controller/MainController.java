@@ -196,37 +196,6 @@ public class MainController {
 		return view;
 	}
 
-	@RequestMapping(value = "/forgotusername", method = RequestMethod.GET)
-	public ModelAndView forgotUsername() {
-		ModelAndView view = new ModelAndView();
-		User user = new User();
-		view.addObject("user", user);
-		return view;
-
-	}
-
-	@RequestMapping(value = "/forgotusername", method = RequestMethod.POST)
-	public ModelAndView forgotUsernamePost(@ModelAttribute("user") User user,
-			@RequestParam(value = "error", required = false) String error) {
-		ModelAndView view = new ModelAndView();
-		try {
-			user = userDAO.findByEmail(user.getEmail());
-			email.forgotUsername(user);
-			view.setViewName("redirect:/login");
-		} catch (Exception e) {
-			view.addObject("error", "Invalid email address");
-		}
-
-		return view;
-	}
-
-	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
-	public ModelAndView forgotPassword() {
-		ModelAndView view = new ModelAndView();
-		return view;
-
-	}
-
 	@RequestMapping(value = "/streams", method = RequestMethod.GET)
 	public ModelAndView streams() {
 		ModelAndView view = new ModelAndView();
