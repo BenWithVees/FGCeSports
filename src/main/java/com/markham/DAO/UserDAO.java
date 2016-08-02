@@ -21,7 +21,7 @@ import com.markham.tables.User;
 @Transactional
 public class UserDAO {
 
-	@PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "samsung")
+	@PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "ben")
 	@Qualifier(value = "entityManagerFactory")
 	private EntityManager em;
 

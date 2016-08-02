@@ -3,11 +3,9 @@ package com.markham.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +14,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -114,23 +113,22 @@ public class MainController {
 	public ModelAndView userProfile(@PathVariable String userName, HttpServletResponse response,
 			HttpServletRequest request) throws IOException {
 		ModelAndView view = new ModelAndView();
-		Settings settings = userDAO.getSettings(userName);
 		String photoString = "";
-		try {
-			InputStream in = new ByteArrayInputStream(settings.getProfilePicture());
-			BufferedImage img = ImageIO.read(in);
-			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-			ImageIO.write(img, "png", byteArrayOutputStream);
-			photoString = Base64.encodeBase64String(byteArrayOutputStream.toByteArray());
-
-		} catch (Exception e) {
-			System.err.println(e);
-		}
 		try {
 			userDAO.find(userName);
 		} catch (Exception e) {
 			System.err.println(e);
 			return new ModelAndView("redirect:/404");
+		}
+		try {
+			Settings settings = userDAO.getSettings(userName);
+			InputStream in = new ByteArrayInputStream(settings.getProfilePicture());
+			BufferedImage img = ImageIO.read(in);
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			ImageIO.write(img, "png", byteArrayOutputStream);
+			photoString = Base64.encodeBase64String(byteArrayOutputStream.toByteArray());
+		} catch (Exception e) {
+			System.err.println(e);
 		}
 		view.addObject("picture", photoString);
 		view.addObject("userName", userName);
@@ -205,6 +203,14 @@ public class MainController {
 	@RequestMapping(value = "/streams", method = RequestMethod.GET)
 	public ModelAndView streams() {
 		ModelAndView view = new ModelAndView();
+		return view;
+	}
+
+	@PreAuthorize("hasRole('ROLE_Creater')")
+	@RequestMapping(value = "/addarticle", method = RequestMethod.GET)
+	public ModelAndView addArticle() {
+		ModelAndView view = new ModelAndView();
+
 		return view;
 	}
 

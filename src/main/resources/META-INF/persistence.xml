@@ -5,9 +5,9 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
 
-	<persistence-unit name="samsung" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="ben" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<non-jta-data-source>java:/comp/env/jdbc/samsung</non-jta-data-source>
+		<non-jta-data-source>java:/comp/env/jdbc/ben</non-jta-data-source>
 		<properties>
 			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
 			<property name="hibernate.format_sql" value="true" />
@@ -23,6 +23,4 @@
 				value="true" />
 		</properties>
 	</persistence-unit>
-
-
 </persistence>

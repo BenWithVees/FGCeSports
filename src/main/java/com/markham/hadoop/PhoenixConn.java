@@ -10,7 +10,7 @@ public class PhoenixConn {
 	public static void main(String args[]) throws Exception {
 		Class.forName("org.apache.phoenix.jdbc.PhoenixDriver");
 
-		Connection conn = DriverManager.getConnection("jdbc:phoenix:xxxx:/hbase-unsecure");
+		Connection conn = DriverManager.getConnection("jdbc:phoenix:1.215.236.28:2181:/hbase-unsecure");
 
 		System.out.println("got connection");
 		ResultSet rst = conn.createStatement().executeQuery("select * from stock_symbol");

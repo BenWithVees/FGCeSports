@@ -28,7 +28,7 @@
 	<authentication-manager>
 		<authentication-provider>
 			<password-encoder ref="encoder" />
-			<jdbc-user-service data-source-ref="samsungDS"
+			<jdbc-user-service data-source-ref="benDS"
 				users-by-username-query="select username, password, user_roles from users where username=?"
 				authorities-by-username-query="select username, role from user_roles where username =?" />
 		</authentication-provider>

@@ -52,14 +52,14 @@
 	</bean>
 
 	<!-- Data Source Declaration -->
-	<jee:jndi-lookup id="samsungDS" jndi-name="jdbc/samsung"
+	<jee:jndi-lookup id="benDS" jndi-name="jdbc/ben"
 		expected-type="javax.sql.DataSource" />
 
 	<!-- Session Factory Declaration -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="samsungDS" />
-		<property name="persistenceUnitName" value="samsung" />
+		<property name="dataSource" ref="benDS" />
+		<property name="persistenceUnitName" value="ben" />
 		<property name="packagesToScan" value="com.markham.*" />
 	</bean>
 
