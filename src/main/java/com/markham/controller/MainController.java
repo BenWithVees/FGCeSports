@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
@@ -47,6 +49,9 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView view = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Collection<? extends GrantedAuthority> roles = auth.getAuthorities();
+		view.addObject("roles", roles);
 		view.setViewName("index");
 		return view;
 	}
@@ -142,6 +147,7 @@ public class MainController {
 		ModelAndView view = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
+		
 		Settings settings = userDAO.getSettings(name);
 		String fileName = null;
 		if (!file.isEmpty()) {

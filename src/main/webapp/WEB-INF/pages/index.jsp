@@ -263,7 +263,7 @@
 		</table>
 	</div>
 	<sec:authorize access="hasRole('ROLE_Creater')">
-		<a href="./addarticle">Add Article</a>
+		<a style="float: left" href="./addarticle">Add Article</a>
 	</sec:authorize>
 </div>
 </body>
