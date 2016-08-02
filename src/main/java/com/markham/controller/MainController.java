@@ -34,6 +34,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
+import com.markham.tables.Articles;
 import com.markham.tables.Settings;
 import com.markham.tables.User;
 
@@ -147,7 +148,7 @@ public class MainController {
 		ModelAndView view = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
-		
+
 		Settings settings = userDAO.getSettings(name);
 		String fileName = null;
 		if (!file.isEmpty()) {
@@ -216,8 +217,19 @@ public class MainController {
 	@RequestMapping(value = "/addarticle", method = RequestMethod.GET)
 	public ModelAndView addArticle() {
 		ModelAndView view = new ModelAndView();
-
+		Articles articles = new Articles();
+		view.addObject("article", articles);
 		return view;
 	}
 
+	@PreAuthorize("hasRole('ROLE_Creater')")
+	@RequestMapping(value = "addarticle", method = RequestMethod.POST)
+	public ModelAndView addArticlePost(@ModelAttribute("article") Articles articles) {
+		ModelAndView view = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		userDAO.submitArticle(articles, name);
+		view.setViewName("redirect:/");
+		return view;
+	}
 }

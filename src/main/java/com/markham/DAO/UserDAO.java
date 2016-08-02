@@ -8,11 +8,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.markham.tables.Articles;
 import com.markham.tables.Role;
 import com.markham.tables.Settings;
 import com.markham.tables.User;
@@ -107,5 +109,12 @@ public class UserDAO {
 		query.setParameter("username", username);
 		Settings settings = query.getSingleResult();
 		return settings;
+	}
+
+	public Articles submitArticle(Articles articles, String username) {
+		articles.setTimestamp(new DateTime());
+		articles.setAuthor(username);
+		em.persist(articles);
+		return articles;
 	}
 }
