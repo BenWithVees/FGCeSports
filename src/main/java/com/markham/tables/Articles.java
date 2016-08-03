@@ -11,7 +11,7 @@ import org.joda.time.DateTime;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Articles.getArticles", query = "SELECT a FROM Articles a"),
-		@NamedQuery(name = "Articles.getSingleArticle", query = "SELECT a FROM Articles a WHERE a.articleTitle =:articleTitle") })
+		@NamedQuery(name = "Articles.getSingleArticles", query = "SELECT a FROM Articles a WHERE a.articleTitle =:articleTitle") })
 
 @Table(name = "articles")
 public class Articles {

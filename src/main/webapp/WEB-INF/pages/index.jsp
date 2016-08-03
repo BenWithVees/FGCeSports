@@ -130,7 +130,7 @@
 <jsp:include page="./menu.jsp" />
 <div class="container">
 	<c:forEach items="${list}" var="list">
-		<a href="/${list.articleTitle }">
+		<a href="./news/${list.articleTitle }">
 			<div class="article_section">
 				<div class="articles_SF"></div>
 				<div class="articles_words">
