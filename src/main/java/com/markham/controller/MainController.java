@@ -217,27 +217,5 @@ public class MainController {
 		return view;
 	}
 
-	@PreAuthorize("hasRole('ROLE_Creater')")
-	@RequestMapping(value = "/addarticle", method = RequestMethod.GET)
-	public ModelAndView addArticle() {
-		ModelAndView view = new ModelAndView();
-		Articles articles = new Articles();
-		List<String> thumbnail = new ArrayList<String>();
-		thumbnail.add("Smash Bros");
-		thumbnail.add("Street Fighter");
-		view.addObject("thumbnail", thumbnail);
-		view.addObject("article", articles);
-		return view;
-	}
-
-	@PreAuthorize("hasRole('ROLE_Creater')")
-	@RequestMapping(value = "addarticle", method = RequestMethod.POST)
-	public ModelAndView addArticlePost(@ModelAttribute("article") Articles articles) {
-		ModelAndView view = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName();
-		userDAO.submitArticle(articles, name);
-		view.setViewName("redirect:/");
-		return view;
-	}
+	
 }
