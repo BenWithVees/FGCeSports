@@ -5,7 +5,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +54,9 @@ public class MainController {
 		ModelAndView view = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Collection<? extends GrantedAuthority> roles = auth.getAuthorities();
+		List<Articles> list = userDAO.getArticles();
 		view.addObject("roles", roles);
+		view.addObject("list", list);
 		view.setViewName("index");
 		return view;
 	}
@@ -218,6 +222,10 @@ public class MainController {
 	public ModelAndView addArticle() {
 		ModelAndView view = new ModelAndView();
 		Articles articles = new Articles();
+		List<String> thumbnail = new ArrayList<String>();
+		thumbnail.add("Smash Bros");
+		thumbnail.add("Street Fighter");
+		view.addObject("thumbnail", thumbnail);
 		view.addObject("article", articles);
 		return view;
 	}

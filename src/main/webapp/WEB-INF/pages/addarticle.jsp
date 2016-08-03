@@ -44,11 +44,11 @@
 			<p>Article title:</p>
 			<form:input path="articleTitle" class="article_title" name="input"
 				type="text" placeholder="Enter the article title..."></form:input>
-			<p>Article thumbnail</p>
+			<p>Article thumbnail:</p>
 			<form:input path="articleThumbnail" type="text"
 				class="article_thumbnail" name="input"
 				placeholder="Enter the article thumnail..."></form:input>
-			<p>Article body</p>
+			<p>Article body:</p>
 			<form:textarea path="body" class="article_body" name="input"
 				placeholder="Enter the article body.."></form:textarea>
 			<button type="submit" class="submit">Submit article</button>

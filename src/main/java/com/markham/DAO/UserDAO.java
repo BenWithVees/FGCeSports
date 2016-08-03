@@ -2,6 +2,7 @@ package com.markham.DAO;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -115,6 +116,12 @@ public class UserDAO {
 		articles.setTimestamp(new DateTime());
 		articles.setAuthor(username);
 		em.persist(articles);
+		return articles;
+	}
+
+	public List<Articles> getArticles() {
+		TypedQuery<Articles> query = em.createNamedQuery("Articles.getArticles", Articles.class);
+		List<Articles> articles = query.getResultList();
 		return articles;
 	}
 }

@@ -128,56 +128,54 @@
 <!-- Logout -->
 <jsp:include page="./menu.jsp" />
 <div class="container">
-	<div class="article_section">
-		<div class="articles_SF"></div>
-		<div class="articles_words">
-			<table class="headline">
-				<tr>
-					<th>RZR | Infiltration wins EVO 2016</th>
-				</tr>
-				<tr>
-					<td>words words >words words >words words v>words words >words
-						words>words words>words words>words words>words words words words
-						>words words >words words v>words words >words words>words
-						words>words words>words words>words words</td>
-				</tr>
-			</table>
+	<c:forEach items="${list}" var="list">
+		<div class="article_section">
+			<div class="articles_SF"></div>
+			<div class="articles_words">
+				<table class="headline">
+					<tr>
+						<th>${list.articleTitle}</th>
+					</tr>
+					<tr>
+						<td>${list.body} </td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	</div>
+	</c:forEach>
+	<!-- 	<div class="article_section"> -->
+	<!-- 		<div class="articles_SM"></div> -->
+	<!-- 		<div class="articles_words"> -->
+	<!-- 			<table class="headline"> -->
+	<!-- 				<tr> -->
+	<!-- 					<th>Cloud9 | Mang0 wins Dreamhack Austin</th> -->
+	<!-- 				</tr> -->
+	<!-- 				<tr> -->
+	<!-- 					<td>words words >words words >words words v>words words >words -->
+	<!-- 						words>words words>words words>words words>words words words words -->
+	<!-- 						>words words >words words v>words words >words words>words -->
+	<!-- 						words>words words>words words>words words</td> -->
+	<!-- 				</tr> -->
+	<!-- 			</table> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 
-	<div class="article_section">
-		<div class="articles_SM"></div>
-		<div class="articles_words">
-			<table class="headline">
-				<tr>
-					<th>Cloud9 | Mang0 wins Dreamhack Austin</th>
-				</tr>
-				<tr>
-					<td>words words >words words >words words v>words words >words
-						words>words words>words words>words words>words words words words
-						>words words >words words v>words words >words words>words
-						words>words words>words words>words words</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-
-	<div class="article_section">
-		<div class="articles_SM"></div>
-		<div class="articles_words">
-			<table class="headline">
-				<tr>
-					<th>Johnny "S2J" Kim sponsored by Tempo Storm</th>
-				</tr>
-				<tr>
-					<td>words words >words words >words words v>words words >words
-						words>words words>words words>words words>words words words words
-						>words words >words words v>words words >words words>words
-						words>words words>words words>words words</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+	<!-- 	<div class="article_section"> -->
+	<!-- 		<div class="articles_SM"></div> -->
+	<!-- 		<div class="articles_words"> -->
+	<!-- 			<table class="headline"> -->
+	<!-- 				<tr> -->
+	<!-- 					<th>Johnny "S2J" Kim sponsored by Tempo Storm</th> -->
+	<!-- 				</tr> -->
+	<!-- 				<tr> -->
+	<!-- 					<td>words words >words words >words words v>words words >words -->
+	<!-- 						words>words words>words words>words words>words words words words -->
+	<!-- 						>words words >words words v>words words >words words>words -->
+	<!-- 						words>words words>words words>words words</td> -->
+	<!-- 				</tr> -->
+	<!-- 			</table> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 </div>
 
 <div class="tournament_section">
