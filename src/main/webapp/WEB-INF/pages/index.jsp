@@ -130,19 +130,21 @@
 <jsp:include page="./menu.jsp" />
 <div class="container">
 	<c:forEach items="${list}" var="list">
-		<div class="article_section">
-			<div class="articles_SF"></div>
-			<div class="articles_words">
-				<table class="headline">
-					<tr>
-						<th>${list.articleTitle}</th>
-					</tr>
-					<tr>
-						<td>${fn:substring(list.body,0, 367)}</td>
-					</tr>
-				</table>
+		<a href="/${list.articleTitle }">
+			<div class="article_section">
+				<div class="articles_SF"></div>
+				<div class="articles_words">
+					<table class="headline">
+						<tr>
+							<th>${list.articleTitle}</th>
+						</tr>
+						<tr>
+							<td>${fn:substring(list.body,0, 367)}</td>
+						</tr>
+					</table>
+				</div>
 			</div>
-		</div>
+		</a>
 	</c:forEach>
 	<!-- 	<div class="article_section"> -->
 	<!-- 		<div class="articles_SM"></div> -->

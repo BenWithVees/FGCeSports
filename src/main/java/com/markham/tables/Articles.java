@@ -3,13 +3,16 @@ package com.markham.tables;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
 @Entity
-@NamedQuery(name ="Articles.getArticles", query = "SELECT a FROM Articles a")
+@NamedQueries({ @NamedQuery(name = "Articles.getArticles", query = "SELECT a FROM Articles a"),
+		@NamedQuery(name = "Articles.getSingleArticle", query = "SELECT a FROM Articles a WHERE a.articleTitle =:articleTitle") })
+
 @Table(name = "articles")
 public class Articles {
 

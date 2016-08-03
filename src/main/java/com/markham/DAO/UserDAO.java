@@ -124,4 +124,11 @@ public class UserDAO {
 		List<Articles> articles = query.getResultList();
 		return articles;
 	}
+
+	public Articles getSingleArticles(String articleTitle) {
+		TypedQuery<Articles> query = em.createNamedQuery("Articles.getSingleArticles", Articles.class);
+		query.setParameter("articleTitle", articleTitle);
+		Articles articles = query.getSingleResult();
+		return articles;
+	}
 }

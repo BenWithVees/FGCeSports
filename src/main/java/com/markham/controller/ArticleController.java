@@ -47,10 +47,12 @@ public class ArticleController {
 		return view;
 	}
 
-	@RequestMapping(value = "/{article}", method = RequestMethod.GET)
+	@RequestMapping(value = "/news/{article}", method = RequestMethod.GET)
 	public ModelAndView article(@PathVariable String article) {
 		ModelAndView view = new ModelAndView();
-		
+		Articles articles = userDAO.getSingleArticles(article);
+		view.addObject("articles", articles);
+		view.setViewName("articles");
 		return view;
 	}
 }
