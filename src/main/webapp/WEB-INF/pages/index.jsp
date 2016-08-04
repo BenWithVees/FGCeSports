@@ -139,7 +139,7 @@
 							<th>${list.articleTitle}</th>
 						</tr>
 						<tr>
-							<td>${fn:substring(list.body,0, 367)}</td>
+							<td>${fn:substring(list.body,0, 367)}...</td>
 						</tr>
 					</table>
 				</div>
@@ -263,9 +263,7 @@
 			</tr>
 		</table>
 	</div>
-	<sec:authorize access="hasRole('ROLE_Creater')">
-		<a style="float: left" href="./addarticle">Add Article</a>
-	</sec:authorize>
+
 </div>
 </body>
 </html>

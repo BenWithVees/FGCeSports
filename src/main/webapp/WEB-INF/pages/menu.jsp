@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE>
 <html>
 <style>
@@ -73,11 +75,14 @@ body {
 		value="${pageContext.request.userPrincipal.name}" />
 	<div class="menu">
 		<ul class="nav">
-			<li><a href="./">Home</a><i class="circle"></i></li>
-			<li><a href="./games">Games</a></li>
-			<li><a href="./players">Players</a></li>
+			<li><a href="/FGCeSports/">Home</a><i class="circle"></i></li>
+			<li><a href="/FGCeSports/games">Games</a></li>
+			<li><a href="/FGCeSports/players">Players</a></li>
 			<li><a href="">News</a></li>
-			<li><a href="./streams">Streams</a></li>
+			<li><a href="/FGCeSports/streams">Streams</a></li>
+			<sec:authorize access="hasRole('ROLE_Creater')">
+				<li><a href="/FGCeSports/addarticle">Add article</a></li>
+			</sec:authorize>
 			<li style="float: right"><c:choose>
 					<c:when test="${not empty username}">
 						<a href="./${username }"><c:out value="${username}" /></a>

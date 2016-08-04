@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.joda.time.DateTime;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Articles.getArticles", query = "SELECT a FROM Articles a"),
+@NamedQueries({ @NamedQuery(name = "Articles.getArticles", query = "SELECT a FROM Articles a ORDER BY a.id DESC"),
 		@NamedQuery(name = "Articles.getSingleArticles", query = "SELECT a FROM Articles a WHERE a.articleTitle =:articleTitle") })
 
 @Table(name = "articles")
