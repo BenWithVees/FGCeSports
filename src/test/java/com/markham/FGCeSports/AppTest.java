@@ -1,11 +1,34 @@
 package com.markham.FGCeSports;
 
-import com.sun.jersey.core.util.Base64;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.imageio.ImageIO;
 
 public class AppTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
 
-		System.out.println(Base64.decode(
-				"Salted__ifK/Ei9^1Q*Qt+V= /W&/ _V?qfF\"=q[ z * Zu\5kLC"));
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://xiilab.mynetgear.com:1106/test", "root",
+				"xii1lab2");
+
+		PreparedStatement ps;
+		BufferedImage originalImage = ImageIO.read(new File("/Users/ben//Downloads/1417949689-sfv-logo-r.png"));
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(originalImage, "png", baos);
+		baos.flush();
+		byte[] imageInByte = baos.toByteArray();
+		ps = conn.prepareStatement("INSERT INTO thumbnail (picture, name) VALUES (?, ?)");
+		ps.setBytes(1, imageInByte);
+		ps.setString(2, "Street Figther");
+		ps.executeUpdate();
+		conn.close();
+		System.out.println("Done");
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.markham.DAO.UserDAO;
 import com.markham.tables.Articles;
+import com.markham.tables.Thumbnail;
 
 @RestController
 public class ArticleController {
@@ -28,10 +29,12 @@ public class ArticleController {
 	public ModelAndView addArticle() {
 		ModelAndView view = new ModelAndView();
 		Articles articles = new Articles();
-		List<String> thumbnail = new ArrayList<String>();
-		thumbnail.add("Smash Bros");
-		thumbnail.add("Street Fighter");
-		view.addObject("thumbnail", thumbnail);
+		List<Thumbnail> thumbnail = userDAO.getThumbnail();
+		List<String> thumbnailName = new ArrayList<String>();
+		for (int i = 0; i < thumbnail.size(); i++) {
+			thumbnailName.add(thumbnail.get(i).getName());
+		}
+		view.addObject("thumbnailName", thumbnailName);
 		view.addObject("article", articles);
 		return view;
 	}

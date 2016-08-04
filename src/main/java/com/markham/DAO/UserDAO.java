@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.markham.tables.Articles;
 import com.markham.tables.Role;
 import com.markham.tables.Settings;
+import com.markham.tables.Thumbnail;
 import com.markham.tables.User;
 
 @Component
@@ -130,5 +131,11 @@ public class UserDAO {
 		query.setParameter("articleTitle", articleTitle);
 		Articles articles = query.getSingleResult();
 		return articles;
+	}
+
+	public List<Thumbnail> getThumbnail() {
+		TypedQuery<Thumbnail> query = em.createNamedQuery("Thumbnail.getThumbnail", Thumbnail.class);
+		List<Thumbnail> thumbnail = query.getResultList();
+		return thumbnail;
 	}
 }

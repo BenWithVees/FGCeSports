@@ -80,6 +80,7 @@ body {
 			<li><a href="/FGCeSports/players">Players</a></li>
 			<li><a href="">News</a></li>
 			<li><a href="/FGCeSports/streams">Streams</a></li>
+			<li><a href="/FGCeSports/schedule">Schedule</a></li>
 			<sec:authorize access="hasRole('ROLE_Creater')">
 				<li><a href="/FGCeSports/addarticle">Add article</a></li>
 			</sec:authorize>

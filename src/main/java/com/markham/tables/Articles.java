@@ -24,7 +24,7 @@ public class Articles {
 	private String articleTitle;
 
 	@Column(name = "article_thumbnail")
-	private byte[] articleThumbnail;
+	private String articleThumbnail;
 
 	@Column(name = "author")
 	private String author;
@@ -54,11 +54,11 @@ public class Articles {
 		this.articleTitle = articleTitle;
 	}
 
-	public byte[] getArticleThumbnail() {
+	public String getArticleThumbnail() {
 		return articleThumbnail;
 	}
 
-	public void setArticleThumbnail(byte[] articleThumbnail) {
+	public void setArticleThumbnail(String articleThumbnail) {
 		this.articleThumbnail = articleThumbnail;
 	}
 

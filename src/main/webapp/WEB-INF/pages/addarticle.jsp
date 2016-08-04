@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <style>
@@ -45,9 +46,10 @@
 			<form:input path="articleTitle" class="article_title" name="input"
 				type="text" placeholder="Enter the article title..."></form:input>
 			<p>Article thumbnail:</p>
-			<form:input path="articleThumbnail" type="text"
-				class="article_thumbnail" name="input"
-				placeholder="Enter the article thumnail..."></form:input>
+			<form:select path="articleThumbnail">
+				<form:option value="">Select thumbnail</form:option>
+				<form:options items="${thumbnailName}"></form:options>
+			</form:select>
 			<p>Article body:</p>
 			<form:textarea path="body" class="article_body" name="input"
 				placeholder="Enter the article body.."></form:textarea>
