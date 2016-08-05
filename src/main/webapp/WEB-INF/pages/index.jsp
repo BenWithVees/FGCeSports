@@ -126,6 +126,7 @@
 	border-right: 1px solid #999;
 }
 </style>
+<title>eSports FGC</title>
 <!-- Logout -->
 <jsp:include page="./menu.jsp" />
 <div class="container">
@@ -146,39 +147,6 @@
 			</div>
 		</a>
 	</c:forEach>
-	<!-- 	<div class="article_section"> -->
-	<!-- 		<div class="articles_SM"></div> -->
-	<!-- 		<div class="articles_words"> -->
-	<!-- 			<table class="headline"> -->
-	<!-- 				<tr> -->
-	<!-- 					<th>Cloud9 | Mang0 wins Dreamhack Austin</th> -->
-	<!-- 				</tr> -->
-	<!-- 				<tr> -->
-	<!-- 					<td>words words >words words >words words v>words words >words -->
-	<!-- 						words>words words>words words>words words>words words words words -->
-	<!-- 						>words words >words words v>words words >words words>words -->
-	<!-- 						words>words words>words words>words words</td> -->
-	<!-- 				</tr> -->
-	<!-- 			</table> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-
-	<!-- 	<div class="article_section"> -->
-	<!-- 		<div class="articles_SM"></div> -->
-	<!-- 		<div class="articles_words"> -->
-	<!-- 			<table class="headline"> -->
-	<!-- 				<tr> -->
-	<!-- 					<th>Johnny "S2J" Kim sponsored by Tempo Storm</th> -->
-	<!-- 				</tr> -->
-	<!-- 				<tr> -->
-	<!-- 					<td>words words >words words >words words v>words words >words -->
-	<!-- 						words>words words>words words>words words>words words words words -->
-	<!-- 						>words words >words words v>words words >words words>words -->
-	<!-- 						words>words words>words words>words words</td> -->
-	<!-- 				</tr> -->
-	<!-- 			</table> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
 </div>
 
 <div class="tournament_section">

@@ -1,6 +1,8 @@
 package com.markham.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,9 @@ public class ArticleController {
 	public ModelAndView article(@PathVariable String article) {
 		ModelAndView view = new ModelAndView();
 		Articles articles = userDAO.getSingleArticles(article);
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy hh:mm aa");
+		String date = sdf.format(articles.getTimestamp().toDate());
+		view.addObject("date", date);
 		view.addObject("articles", articles);
 		view.setViewName("articles");
 		return view;
