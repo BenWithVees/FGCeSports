@@ -217,5 +217,10 @@ public class MainController {
 		return view;
 	}
 
-	
+	@RequestMapping(value = "/schedule", method = RequestMethod.GET)
+	public ModelAndView schedule() {
+		ModelAndView view = new ModelAndView();
+		return view;
+	}
+
 }

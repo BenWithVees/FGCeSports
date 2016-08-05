@@ -36,7 +36,7 @@ body {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>eSports eSports</title>
+<title>eSports </title>
 </head>
 <body>
 	<div class="container">
