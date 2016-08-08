@@ -17,7 +17,7 @@
 	width: 50%;
 	color: #999;
 	font-style: italic;
-	margin-bottom: 50px;
+	margin-bottom: 70px;
 }
 
 .october h1 {
@@ -25,6 +25,17 @@
 }
 
 .october {
+	width: 70%;
+	color: #999;
+	font-style: italic;
+	margin-bottom: 70px;
+}
+
+.december h1 {
+	border-bottom: 1px solid #999;
+}
+
+.december {
 	width: 70%;
 	color: #999;
 	font-style: italic;
@@ -46,6 +57,13 @@
 			<h1>October</h1>
 			<img src="resource/images/NECimg.png" /> <img
 				src="resource/images/SJimg1.png" />
+		</div>
+		<div class="december">
+			<h1>December</h1>
+			<img style="height: 20%; width: 20%;"
+				src="resource/images/capcom-pro-tour-2016.png" /> <img
+				style="height: 20%; width: 30%;"
+				src="resource/images/DreamHack-logo.png" />
 		</div>
 
 	</div>
