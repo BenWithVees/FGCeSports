@@ -83,6 +83,7 @@ body {
 			<li><a href="/FGCeSports/schedule">Schedule</a></li>
 			<sec:authorize access="hasRole('ROLE_Creater')">
 				<li><a href="/FGCeSports/addarticle">Add article</a></li>
+				<li><a href="/FGCeSports/addtournament">Add tournament</a></li>
 			</sec:authorize>
 			<li style="float: right"><c:choose>
 					<c:when test="${not empty username}">

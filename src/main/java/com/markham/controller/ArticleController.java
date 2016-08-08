@@ -48,7 +48,7 @@ public class ArticleController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
 		userDAO.submitArticle(articles, name);
-		view.setViewName("redirect:/"+ articles.getArticleTitle());
+		view.setViewName("redirect:/" + articles.getArticleTitle());
 		return view;
 	}
 
@@ -62,5 +62,12 @@ public class ArticleController {
 		view.addObject("articles", articles);
 		view.setViewName("articles");
 		return view;
+	}
+
+	@RequestMapping(value = "/addtournament", method = RequestMethod.GET)
+	public ModelAndView addTournament() {
+		ModelAndView view = new ModelAndView();
+		return view;
+
 	}
 }
