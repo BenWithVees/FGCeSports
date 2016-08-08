@@ -4,10 +4,30 @@
 <html>
 <style>
 .container {
-	width: 70%;
+	width: 90%;
 	height: 90%;
 	margin: auto;
-	border: solid 1px black;
+}
+
+.today h1 {
+	border-bottom: 1px solid #999;
+}
+
+.today {
+	width: 50%;
+	color: #999;
+	font-style: italic;
+	margin-bottom: 50px;
+}
+
+.october h1 {
+	border-bottom: 1px solid #999;
+}
+
+.october {
+	width: 70%;
+	color: #999;
+	font-style: italic;
 }
 </style>
 <head>
@@ -16,6 +36,18 @@
 </head>
 <body>
 	<jsp:include page="./menu.jsp" />
-	<div class="container"></div>
+	<div class="container">
+		<div class="today">
+			<h1>Today</h1>
+			<img style="height: 20%; width: 20%;"
+				src="resource/images/Evo_Championship_Series_Logo.png" />
+		</div>
+		<div class="october">
+			<h1>October</h1>
+			<img src="resource/images/NECimg.png" /> <img
+				src="resource/images/SJimg1.png" />
+		</div>
+
+	</div>
 </body>
 </html>

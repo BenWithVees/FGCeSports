@@ -48,7 +48,7 @@ public class ArticleController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
 		userDAO.submitArticle(articles, name);
-		view.setViewName("redirect:/");
+		view.setViewName("redirect:/"+ articles.getArticleTitle());
 		return view;
 	}
 
