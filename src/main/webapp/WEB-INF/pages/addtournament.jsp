@@ -29,13 +29,13 @@
 		<input type="text"
 			placeholder="Ex: Street Fighter V, Killer Instinct...">
 			<input type="text" placeholder="1st place winner">
-			<input type="text" placeholder="2st place winner">
-			<input type="text" placeholder="3st place winner">
-			<input type="text" placeholder="4t place winner">
-			<input type="text" placeholder="5st place winner">
-			<input type="text" placeholder="5st place winner">
-			<input type="text" placeholder="7st place winner">
-			<input type="text" placeholder="7st place winner">
+			<input type="text" placeholder="2nd place winner">
+			<input type="text" placeholder="3rd place winner">
+			<input type="text" placeholder="4th place winner">
+			<input type="text" placeholder="5th place winner">
+			<input type="text" placeholder="5th place winner">
+			<input type="text" placeholder="7th place winner">
+			<input type="text" placeholder="7th place winner">
 	</div>
 
 

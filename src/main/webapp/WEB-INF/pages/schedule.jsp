@@ -50,8 +50,7 @@
 	<div class="container">
 		<div class="today">
 			<h1>Today</h1>
-			<img style="height: 20%; width: 20%;"
-				src="resource/images/Evo_Championship_Series_Logo.png" />
+			<img src="resource/images/Evo_Championship_Series_Logo.png" />
 		</div>
 		<div class="october">
 			<h1>October</h1>
@@ -60,9 +59,7 @@
 		</div>
 		<div class="december">
 			<h1>December</h1>
-			<img style="height: 20%; width: 20%;"
-				src="resource/images/capcom-pro-tour-2016.png" /> <img
-				style="height: 20%; width: 30%;"
+			<img src="resource/images/capcom-pro-tour-2016.png" /> <img
 				src="resource/images/DreamHack-logo.png" />
 		</div>
 
