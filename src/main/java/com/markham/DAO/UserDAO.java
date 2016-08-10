@@ -146,4 +146,8 @@ public class UserDAO {
 		return tournaments;
 
 	}
+
+	public void submitTournamets(Tournaments tournaments) {
+		em.persist(tournaments);
+	}
 }

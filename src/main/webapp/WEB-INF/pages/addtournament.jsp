@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE>
 <html>
 <style>
@@ -25,19 +26,31 @@
 <jsp:include page="./menu.jsp" />
 <body>
 	<div class="container">
-		<input type="text" placeholder="Ex: EVO 2016, Final Round 2016...">
-		<input type="text"
-			placeholder="Ex: Street Fighter V, Killer Instinct...">
-			<input type="text" placeholder="1st place winner">
-			<input type="text" placeholder="2nd place winner">
-			<input type="text" placeholder="3rd place winner">
-			<input type="text" placeholder="4th place winner">
-			<input type="text" placeholder="5th place winner">
-			<input type="text" placeholder="5th place winner">
-			<input type="text" placeholder="7th place winner">
-			<input type="text" placeholder="7th place winner">
+		<form:form commandName="tournaments" method="POST"
+			modelAttribute="tournaments">
+			<form:input path="tournamentName" type="text"
+				placeholder="Ex: EVO 2016, Final Round 2016..."></form:input>
+			<form:input path="gameName" type="text"
+				placeholder="Ex: Street Fighter V, Killer Instinct..."></form:input>
+
+			<form:input path="firstPlace" type="text"
+				placeholder="1st place winner"></form:input>
+			<form:input path="secondPlace" type="text"
+				placeholder="2nd place winner"></form:input>
+			<form:input path="thirdPlace" type="text"
+				placeholder="3rd place winner"></form:input>
+			<form:input path="fourthPlace" type="text"
+				placeholder="4th place winner"></form:input>
+			<form:input path="fifthPlace" type="text"
+				placeholder="5th place winner"></form:input>
+			<form:input path="fifthPlaceSecond" type="text"
+				placeholder="5th place winner"></form:input>
+			<form:input path="seventhPlace" type="text"
+				placeholder="7th place winner"></form:input>
+			<form:input path="seventhPlaceSecond" type="text"
+				placeholder="7th place winner"></form:input>
+			<button type="submit">Submit</button>
+		</form:form>
 	</div>
-
-
 </body>
 </html>

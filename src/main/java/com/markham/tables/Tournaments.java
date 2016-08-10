@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tournaments")
-@NamedQuery(name = "Tournaments.getTournamets", query = "SELECT t FROM Tournaments t")
+@NamedQuery(name = "Tournaments.getTournaments", query = "SELECT t FROM Tournaments t")
 public class Tournaments {
 
 	@Id

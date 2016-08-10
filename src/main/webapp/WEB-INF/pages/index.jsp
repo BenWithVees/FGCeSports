@@ -150,88 +150,90 @@
 </div>
 
 <div class="tournament_section">
+
 	<h1
 		style="margin: auto; width: 300px; text-align: center; border-bottom: 1px solid #999;">EVO
 		2016</h1>
-	<div class=tournament_game>
-		<h1
-			style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 250px;">Street
-			Fighter V</h1>
-		<table class="tournament_result">
-			<tr>
-				<td>1st</td>
-				<td>RZR | Infiltration</td>
-			</tr>
-			<tr>
-				<td>2nd</td>
-				<td>MCZ | Tokido</td>
-			</tr>
-			<tr>
-				<td>3rd</td>
-				<td>MCZ | Daigo Umehara</td>
-			</tr>
-			<tr>
-				<td>4th</td>
-				<td>EG | Ricky Ortiz</td>
-			</tr>
-			<tr>
-				<td>5th</td>
-				<td>RZR | Xian</td>
-			</tr>
-			<tr>
-				<td>6th</td>
-				<td>Aver | Gamerbee</td>
-			</tr>
-			<tr>
-				<td>7th</td>
-				<td>Redbull | Snake Eyez</td>
-			</tr>
-			<tr>
-				<td>8th</td>
-				<td>Chris Tatarian</td>
-			</tr>
-		</table>
-	</div>
-<!-- 	<div class=tournament_game> -->
-<!-- 		<h1 -->
-<!-- 			style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 350px;">Super -->
-<!-- 			Smash Bros. Melee</h1> -->
-<!-- 		<table class="tournament_result"> -->
-<!-- 			<tr> -->
-<!-- 				<td>1st</td> -->
-<!-- 				<td>C9 | Mang0</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>2nd</td> -->
-<!-- 				<td>Liquid | Hungrybox</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>3rd</td> -->
-<!-- 				<td>Echo Fox | Mew2king</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>4th</td> -->
-<!-- 				<td>EG | PPMD</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>5th</td> -->
-<!-- 				<td>Alliance | Armada</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>6th</td> -->
-<!-- 				<td>SM | Leffen</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>7th</td> -->
-<!-- 				<td>Tempo | Westballz</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>8th</td> -->
-<!-- 				<td>Tempo | Axe</td> -->
-<!-- 			</tr> -->
-<!-- 		</table> -->
-<!-- 	</div> -->
-
+<%-- 	<c:forEach items="${tournaments}" var="tournaments"> --%>
+		<div class=tournament_game>
+			<h1
+				style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 250px;">Street
+				Fighter V</h1>
+			<table class="tournament_result">
+				<tr>
+					<td>1st</td>
+					<td>RZR | Infiltration</td>
+				</tr>
+				<tr>
+					<td>2nd</td>
+					<td>MCZ | Tokido</td>
+				</tr>
+				<tr>
+					<td>3rd</td>
+					<td>MCZ | Daigo Umehara</td>
+				</tr>
+				<tr>
+					<td>4th</td>
+					<td>EG | Ricky Ortiz</td>
+				</tr>
+				<tr>
+					<td>5th</td>
+					<td>RZR | Xian</td>
+				</tr>
+				<tr>
+					<td>6th</td>
+					<td>Aver | Gamerbee</td>
+				</tr>
+				<tr>
+					<td>7th</td>
+					<td>Redbull | Snake Eyez</td>
+				</tr>
+				<tr>
+					<td>8th</td>
+					<td>Chris Tatarian</td>
+				</tr>
+			</table>
+		</div>
+<%-- 	</c:forEach> --%>
+	<!-- 	<div class=tournament_game> -->
+	<!-- 		<h1 -->
+	<!-- 			style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 350px;">Super -->
+	<!-- 			Smash Bros. Melee</h1> -->
+	<!-- 		<table class="tournament_result"> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>1st</td> -->
+	<!-- 				<td>C9 | Mang0</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>2nd</td> -->
+	<!-- 				<td>Liquid | Hungrybox</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>3rd</td> -->
+	<!-- 				<td>Echo Fox | Mew2king</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>4th</td> -->
+	<!-- 				<td>EG | PPMD</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>5th</td> -->
+	<!-- 				<td>Alliance | Armada</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>6th</td> -->
+	<!-- 				<td>SM | Leffen</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>7th</td> -->
+	<!-- 				<td>Tempo | Westballz</td> -->
+	<!-- 			</tr> -->
+	<!-- 			<tr> -->
+	<!-- 				<td>8th</td> -->
+	<!-- 				<td>Tempo | Axe</td> -->
+	<!-- 			</tr> -->
+	<!-- 		</table> -->
+	<!-- 	</div> -->
 </div>
 </body>
 </html>

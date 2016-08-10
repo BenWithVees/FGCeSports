@@ -74,8 +74,10 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "/addtournament", method = RequestMethod.POST)
-	public ModelAndView addTournamentPost() {
+	public ModelAndView addTournamentPost(@ModelAttribute("tournaments") Tournaments tournaments) {
 		ModelAndView view = new ModelAndView();
+		userDAO.submitTournamets(tournaments);
+		view.setViewName("redirect:/");
 		return view;
 	}
 }
