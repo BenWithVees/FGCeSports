@@ -152,88 +152,47 @@
 <div class="tournament_section">
 
 	<h1
-		style="margin: auto; width: 300px; text-align: center; border-bottom: 1px solid #999;">EVO
-		2016</h1>
-<%-- 	<c:forEach items="${tournaments}" var="tournaments"> --%>
+		style="margin: auto; width: 300px; text-align: center; border-bottom: 1px solid #999;">${tournamentName }</h1>
+	<c:forEach items="${tournaments}" var="tournaments">
 		<div class=tournament_game>
 			<h1
-				style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 250px;">Street
-				Fighter V</h1>
+				style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 250px;">${tournaments.gameName }</h1>
 			<table class="tournament_result">
 				<tr>
 					<td>1st</td>
-					<td>RZR | Infiltration</td>
+					<td>${tournaments.firstPlace}</td>
 				</tr>
 				<tr>
 					<td>2nd</td>
-					<td>MCZ | Tokido</td>
+					<td>${tournaments.secondPlace}</td>
 				</tr>
 				<tr>
 					<td>3rd</td>
-					<td>MCZ | Daigo Umehara</td>
+					<td>${tournaments.thirdPlace}</td>
 				</tr>
 				<tr>
 					<td>4th</td>
-					<td>EG | Ricky Ortiz</td>
+					<td>${tournaments.fourthPlace}</td>
 				</tr>
 				<tr>
 					<td>5th</td>
-					<td>RZR | Xian</td>
+					<td>${tournaments.fifthPlace}</td>
 				</tr>
 				<tr>
-					<td>6th</td>
-					<td>Aver | Gamerbee</td>
+					<td>5th</td>
+					<td>${tournaments.fifthPlaceSecond}</td>
 				</tr>
 				<tr>
 					<td>7th</td>
-					<td>Redbull | Snake Eyez</td>
+					<td>${tournaments.seventhPlace}</td>
 				</tr>
 				<tr>
-					<td>8th</td>
-					<td>Chris Tatarian</td>
+					<td>7th</td>
+					<td>${tournaments.seventhPlaceSecond}</td>
 				</tr>
 			</table>
 		</div>
-<%-- 	</c:forEach> --%>
-	<!-- 	<div class=tournament_game> -->
-	<!-- 		<h1 -->
-	<!-- 			style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 350px;">Super -->
-	<!-- 			Smash Bros. Melee</h1> -->
-	<!-- 		<table class="tournament_result"> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>1st</td> -->
-	<!-- 				<td>C9 | Mang0</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>2nd</td> -->
-	<!-- 				<td>Liquid | Hungrybox</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>3rd</td> -->
-	<!-- 				<td>Echo Fox | Mew2king</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>4th</td> -->
-	<!-- 				<td>EG | PPMD</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>5th</td> -->
-	<!-- 				<td>Alliance | Armada</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>6th</td> -->
-	<!-- 				<td>SM | Leffen</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>7th</td> -->
-	<!-- 				<td>Tempo | Westballz</td> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>8th</td> -->
-	<!-- 				<td>Tempo | Axe</td> -->
-	<!-- 			</tr> -->
-	<!-- 		</table> -->
-	<!-- 	</div> -->
+	</c:forEach>
 </div>
 </body>
 </html>

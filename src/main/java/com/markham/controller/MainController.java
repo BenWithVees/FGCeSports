@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,7 +16,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,6 +36,7 @@ import com.markham.DAO.Email;
 import com.markham.DAO.UserDAO;
 import com.markham.tables.Articles;
 import com.markham.tables.Settings;
+import com.markham.tables.Tournaments;
 import com.markham.tables.User;
 
 @RestController
@@ -55,6 +54,10 @@ public class MainController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Collection<? extends GrantedAuthority> roles = auth.getAuthorities();
 		List<Articles> list = userDAO.getArticles();
+		List<Tournaments> tournaments = userDAO.getTournaments();
+		String tournamentName = tournaments.get(0).getTournamentName();
+		view.addObject("tournamentName", tournamentName);
+		view.addObject("tournaments", tournaments);
 		view.addObject("roles", roles);
 		view.addObject("list", list);
 		view.setViewName("index");
