@@ -2,7 +2,6 @@ package com.markham.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.markham.DAO.UserDAO;
 import com.markham.tables.Articles;
 import com.markham.tables.Thumbnail;
+import com.markham.tables.Tournaments;
 
 @RestController
 public class ArticleController {
@@ -67,7 +67,15 @@ public class ArticleController {
 	@RequestMapping(value = "/addtournament", method = RequestMethod.GET)
 	public ModelAndView addTournament() {
 		ModelAndView view = new ModelAndView();
+		Tournaments tournaments = new Tournaments();
+		view.addObject("tournaments", tournaments);
 		return view;
 
+	}
+
+	@RequestMapping(value = "/addtournament", method = RequestMethod.POST)
+	public ModelAndView addTournamentPost() {
+		ModelAndView view = new ModelAndView();
+		return view;
 	}
 }

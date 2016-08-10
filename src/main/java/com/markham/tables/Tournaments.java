@@ -3,10 +3,12 @@ package com.markham.tables;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tournaments")
+@NamedQuery(name = "Tournaments.getTournamets", query = "SELECT t FROM Tournaments t")
 public class Tournaments {
 
 	@Id

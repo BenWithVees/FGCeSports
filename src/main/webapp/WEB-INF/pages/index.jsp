@@ -192,45 +192,45 @@
 			</tr>
 		</table>
 	</div>
-	<div class=tournament_game>
-		<h1
-			style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 350px;">Super
-			Smash Bros. Melee</h1>
-		<table class="tournament_result">
-			<tr>
-				<td>1st</td>
-				<td>C9 | Mang0</td>
-			</tr>
-			<tr>
-				<td>2nd</td>
-				<td>Liquid | Hungrybox</td>
-			</tr>
-			<tr>
-				<td>3rd</td>
-				<td>Echo Fox | Mew2king</td>
-			</tr>
-			<tr>
-				<td>4th</td>
-				<td>EG | PPMD</td>
-			</tr>
-			<tr>
-				<td>5th</td>
-				<td>Alliance | Armada</td>
-			</tr>
-			<tr>
-				<td>6th</td>
-				<td>SM | Leffen</td>
-			</tr>
-			<tr>
-				<td>7th</td>
-				<td>Tempo | Westballz</td>
-			</tr>
-			<tr>
-				<td>8th</td>
-				<td>Tempo | Axe</td>
-			</tr>
-		</table>
-	</div>
+<!-- 	<div class=tournament_game> -->
+<!-- 		<h1 -->
+<!-- 			style="margin: auto; text-align: center; padding-top: 20px; border-bottom: 1px solid #999; width: 350px;">Super -->
+<!-- 			Smash Bros. Melee</h1> -->
+<!-- 		<table class="tournament_result"> -->
+<!-- 			<tr> -->
+<!-- 				<td>1st</td> -->
+<!-- 				<td>C9 | Mang0</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>2nd</td> -->
+<!-- 				<td>Liquid | Hungrybox</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>3rd</td> -->
+<!-- 				<td>Echo Fox | Mew2king</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>4th</td> -->
+<!-- 				<td>EG | PPMD</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>5th</td> -->
+<!-- 				<td>Alliance | Armada</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>6th</td> -->
+<!-- 				<td>SM | Leffen</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>7th</td> -->
+<!-- 				<td>Tempo | Westballz</td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>8th</td> -->
+<!-- 				<td>Tempo | Axe</td> -->
+<!-- 			</tr> -->
+<!-- 		</table> -->
+<!-- 	</div> -->
 
 </div>
 </body>
