@@ -74,7 +74,7 @@ public class MainController {
 		return view;
 	}
 
-	@RequestMapping(value = "players", method = RequestMethod.GET)
+	@RequestMapping(value = "/players", method = RequestMethod.GET)
 	public ModelAndView players() {
 		ModelAndView view = new ModelAndView();
 		return view;
