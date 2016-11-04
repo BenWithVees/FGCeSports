@@ -10,7 +10,7 @@
 .container {
 	width: 900px;
 	height: 80%;
-	margin-left: 400px;
+	margin-left: 10%;
 	margin-top: 50px;
 	float: left;
 }
@@ -191,6 +191,7 @@
 					<td>${tournaments.seventhPlaceSecond}</td>
 				</tr>
 			</table>
+			<p style="float:middle;">Edit</p>
 		</div>
 	</c:forEach>
 </div>

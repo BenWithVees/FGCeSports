@@ -46,5 +46,6 @@ body {
 		</div>
 		${articles.body}
 	</div>
+	<input type="submit" value="Delete" />
 </body>
 </html>

@@ -164,6 +164,7 @@ public class MainController {
 				String type = mimetype.split("/")[0];
 				if (!(type.equals("image"))) {
 					view.addObject("error", "Not a valid image");
+					view.setViewName("userpage");
 				} else {
 					fileName = file.getOriginalFilename();
 					settings.setProfilePicture(file.getBytes());

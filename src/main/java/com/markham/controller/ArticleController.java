@@ -42,7 +42,7 @@ public class ArticleController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_Creater')")
-	@RequestMapping(value = "addarticle", method = RequestMethod.POST)
+	@RequestMapping(value = "/addarticle", method = RequestMethod.POST)
 	public ModelAndView addArticlePost(@ModelAttribute("article") Articles articles) {
 		ModelAndView view = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -62,6 +62,16 @@ public class ArticleController {
 		view.addObject("articles", articles);
 		view.setViewName("articles");
 		return view;
+	}
+
+	@RequestMapping(value = "/news/{article}", method = RequestMethod.POST)
+	public ModelAndView articlePost(@PathVariable String article, @ModelAttribute("articles") Articles articles) {
+		ModelAndView view = new ModelAndView();
+		articles = userDAO.getSingleArticles(article);
+		userDAO.deleteArticle(articles);
+		view.setViewName("redirect:/");
+		return view;
+
 	}
 
 	@RequestMapping(value = "/addtournament", method = RequestMethod.GET)

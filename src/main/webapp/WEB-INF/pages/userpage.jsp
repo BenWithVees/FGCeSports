@@ -13,6 +13,13 @@
 	border: 1px solid transparent;
 	color: #a94442;
 }
+
+.container {
+	width: 70%;
+	height: 600px;
+	border: 1px solid black;
+	margin: auto;
+}
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,6 +36,7 @@
 	}
 </script>
 <body>
+
 	<jsp:include page="./menu.jsp" />
 	<sec:authorize access="hasRole('ROLE_${userName }')">
 		<h1>
@@ -53,6 +61,7 @@
 			<input type="submit" value="Upload" />
 		</form:form>
 	</sec:authorize>
+	<div class="container"></div>
 
 </body>
 </html>

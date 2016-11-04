@@ -150,4 +150,8 @@ public class UserDAO {
 	public void submitTournamets(Tournaments tournaments) {
 		em.persist(tournaments);
 	}
+	
+	public void deleteArticle(Articles articles) {
+		em.remove(articles);
+	}
 }
